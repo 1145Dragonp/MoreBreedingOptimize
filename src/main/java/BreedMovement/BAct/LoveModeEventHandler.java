@@ -1,12 +1,15 @@
 
-package BreedMovement;
+package BreedMovement.BAct;
 
+import BreedMovement.Config;
+import BreedMovement.MainClass;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import org.slf4j.Logger;
@@ -30,7 +33,15 @@ public class LoveModeEventHandler {
     // 所以这里必须 >= 3.0，才能保证在原版生下幼崽之前先触发 kiss 事件
     // 之前的 1.0 太小，动物还没走近 1 格内，原版就在 3 格内直接繁殖了
     // Maximum distance for kiss to trigger (must be >= vanilla breeding distance 3.0)
-    private static final double MAX_LOVE_DISTANCE = 2.0;
+    private static double MAX_LOVE_DISTANCE = 2.0;
+
+    @SubscribeEvent
+    public static void onConfigLoading(ModConfigEvent.Loading event) {
+        if (event.getConfig().getSpec() == Config.SPEC) {
+            MAX_LOVE_DISTANCE = Config.MAX_LOVE_DISTANCE.get();
+            // 顺便把之前的 STRENGTH, DROP, DIE 也放这里一起读取
+        }
+    }
 
     // Track which animals have already triggered the kissing event
     // WeakHashMap allows GC to collect entries when animals die

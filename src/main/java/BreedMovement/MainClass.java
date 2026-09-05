@@ -25,6 +25,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import static com.mojang.text2speech.Narrator.LOGGER;
+//import static com.tacz.guns.GunMod.container;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(MainClass.MODID)
@@ -66,9 +67,14 @@ public class MainClass {
         //ModItems.ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
 
+        // 注册成就触发器
+        BreedMovement.ADV.ModTriggers.TRIGGER_TYPES.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreative);
        // modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        //container.registerConfig(ModConfig.Type.COMMON, Config.SPEC, "breedmovement-common.toml");
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC, "breedmovement-common.toml");
 
 
     }

@@ -1,5 +1,6 @@
-package BreedMovement;
+package BreedMovement.BAct;
 
+import BreedMovement.Config;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -13,7 +14,11 @@ public class BreedMovementAction {
     private static final Logger LOGGER = LoggerFactory.getLogger(BreedMovementAction.class);
 
     // 推力力度 (0.5 ~ 1.0 之间效果较好，可根据需求调整)
-    private static final double STRENGTH = 0.3;
+    public  static double STRENGTH = Config.STRENGTH.get();
+
+    //public static double DROP = 0.1;
+
+    //public static double DIE = 0.005;
 
     /**
      * 【兼容接口】
@@ -53,7 +58,8 @@ public class BreedMovementAction {
                 direction);
 
          */
-        if (animal.getRandom().nextDouble() < 0.1) {
+        //掉落阴水率
+        if (animal.getRandom().nextDouble() < Config.DROP_CHANCE.get()) {
             ItemEntity waterBucket = new ItemEntity(
                     animal.level(),
                     animal.getX(),
@@ -61,12 +67,12 @@ public class BreedMovementAction {
                     animal.getZ(),
                     new ItemStack(Items.WATER_BUCKET)
             );
-            // 给物品一个向上的微小速度，模拟掉落效果
+
             waterBucket.setDeltaMovement(0, 0.1, 0);
             animal.level().addFreshEntity(waterBucket);
         }
-
-        if (animal.getRandom().nextDouble() < 0.1) {
+        //掉落精液率
+        if (animal.getRandom().nextDouble() < Config.DROP_CHANCE.get()) {
             ItemEntity waterBucket = new ItemEntity(
                     animal.level(),
                     animal.getX(),
@@ -74,14 +80,14 @@ public class BreedMovementAction {
                     animal.getZ(),
                     new ItemStack(Items.MILK_BUCKET)
             );
-            // 给物品一个向上的微小速度，模拟掉落效果
+
             waterBucket.setDeltaMovement(0, 0.1, 0);
             animal.level().addFreshEntity(waterBucket);
         }
+        //操死率
+        if (animal.getRandom().nextDouble() < Config.DIE_CHANCE.get()) {
 
-        if (animal.getRandom().nextDouble() < 0.005) {
-
-            // 1. 在动物当前位置生成末地烛掉落物
+            // 掉落末地烛
             ItemEntity endRod = new ItemEntity(
                     animal.level(),
                     animal.getX(),
@@ -89,10 +95,12 @@ public class BreedMovementAction {
                     animal.getZ(),
                     new ItemStack(Items.END_ROD)
             );
-            // 给物品一个向上的微小速度，模拟掉落效果
+
+
+
             endRod.setDeltaMovement(0, 0.1, 0);
             animal.level().addFreshEntity(endRod);
-            // 2. 强制实体暴毙 (无视护甲和抗性)
+
             animal.kill();
 
         }
