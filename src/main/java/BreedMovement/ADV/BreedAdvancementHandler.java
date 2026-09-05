@@ -42,11 +42,39 @@ public class BreedAdvancementHandler {
         if (!heldItem.is(Items.END_ROD)) return;
 
         // 同一玩家只授予一次，防止指令反复报错
+        /*
         UUID playerId = player.getUUID();
         if (grantedPlayers.contains(playerId)) {
             return;
         }
         grantedPlayers.add(playerId);
+
+         */
+        // 1. 从事件获取服务器对象，这是新版本的标准写法
+
+
+        // 1. 从事件获取服务器对象
+        var server = event.getLevel().getServer();
+
+// 2. 获取成就管理器
+        var advancements = server.getAdvancements();
+
+// 3. 根据ID找到你的成就对象
+        var advancement = advancements.get(BreedTrigger.ID);
+
+// 4. 核心修正：将 player 强制转换为 ServerPlayer
+        var serverPlayer = (net.minecraft.server.level.ServerPlayer) player;
+
+// 5. 获取玩家的进度信息
+        var playerAdvancements = serverPlayer.getAdvancements();
+
+// 6. 核心判断：如果成就存在，并且玩家已经完成了，就直接 return
+        if (advancement != null && playerAdvancements.getOrStartProgress(advancement).isDone()) {
+            return;
+        }
+
+
+
 
         // 直接调用原版指令授予进度，无需任何复杂的判断
         if (player.getServer() != null) {

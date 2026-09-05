@@ -32,33 +32,10 @@ public class Config {
             .comment("检擦距离")
             .defineInRange("detectionrange", 2.0, 0.0, 20.0);
 
-    // 3. 构建最终的配置规范
-    // ===== 跨物种繁殖 =====
-    public static final ModConfigSpec.DoubleValue CROSSBREED_CHANCE = BUILDER
-            .comment("跨物种繁殖触发概率 (0.0 ~ 1.0)")
-            .defineInRange("crossbreedChance", 0.5, 0.0, 1.0);
+    public static final ModConfigSpec.DoubleValue PLAYFORENDROD = BUILDER
+            .comment("玩家自慰掉落物概率比")
+            .defineInRange("pfed", 0.5, 0.0, 10.0);
 
-    public static final ModConfigSpec.DoubleValue CROSSBREED_DROP_CHANCE = BUILDER
-            .comment("跨物种繁殖掉落金苹果的概率 (0.0 ~ 1.0)")
-            .defineInRange("crossbreedDropChance", 0.25, 0.0, 1.0);
-
-    // ===== 村民繁殖效果 =====
-    public static final ModConfigSpec.DoubleValue VILLAGER_LOVE_CHANCE = BUILDER
-            .comment("村民繁殖后触发爱情效果的概率 (0.0 ~ 1.0)")
-            .defineInRange("villagerLoveChance", 0.6, 0.0, 1.0);
-
-    public static final ModConfigSpec.DoubleValue VILLAGER_EXPLOSION_CHANCE = BUILDER
-            .comment("村民爱情爆炸概率 (0.0 ~ 1.0)")
-            .defineInRange("villagerExplosionChance", 0.3, 0.0, 1.0);
-
-    public static final ModConfigSpec.DoubleValue VILLAGER_EXPLOSION_RADIUS = BUILDER
-            .comment("村民爱情爆炸半径 (建议 1.0 ~ 5.0)")
-            .defineInRange("villagerExplosionRadius", 2.0, 0.5, 10.0);
-
-    // ===== 玩家感染效果 =====
-    public static final ModConfigSpec.DoubleValue PLAYER_INFECTION_CHANCE = BUILDER
-            .comment("玩家被爱情感染的概率 (0.0 ~ 1.0)")
-            .defineInRange("playerInfectionChance", 0.4, 0.0, 1.0);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
