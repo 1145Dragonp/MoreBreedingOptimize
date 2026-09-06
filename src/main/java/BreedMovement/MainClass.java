@@ -1,19 +1,12 @@
 package BreedMovement;
 
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.Animal;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -23,8 +16,11 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import static com.mojang.text2speech.Narrator.LOGGER;
+import BreedMovement.MD.SM.SMItem;
+import BreedMovement.MD.DOGM.DOGMITEM;
+import BreedMovement.MD.JNHC.JNHCITEM;
+
+
 //import static com.tacz.guns.GunMod.container;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -63,6 +59,11 @@ public class MainClass {
         // ✅ 注册方块与物品（必须在构造函数中完成）
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
+
+        SMItem.register(modEventBus);
+        DOGMITEM.register(modEventBus);
+        JNHCITEM.register(modEventBus);
+
 
         //ModItems.ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
