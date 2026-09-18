@@ -1,3 +1,13 @@
+run/
+.gradle/
+build/
+.workbuddy/
+.idea/
+.github/
+.git/
+
+
+
 ### Gradle ###
 .gradle
 build/
@@ -38,12 +48,3 @@ run/
 **/src/generated/**/.cache/
 repo/
 !**/src/**/repo/
-
-build/
-.workbuddy/
-gradle/
-.idea/
-.github/
-.gradle/
-.run/
-src\main\java\BreedMovement\@AI.txt

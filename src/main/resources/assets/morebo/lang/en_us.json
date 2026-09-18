@@ -1,0 +1,19 @@
+{
+  "advancements.morebo.breed_with_end_rod.title": "Stud!",
+  "advancements.morebo.breed_with_end_rod.description": "Use an End Rod to induce breeding on an animal",
+  "item.morebo.sm": "Aphrodisiac",
+  "item.morebo.smt": "Aphrodisiac Syringe",
+  "effect.morebo.lust": "Lust",
+  "itemGroup.morebo.my_creative_tab": "Medical Supplies",
+  "item.morebo.test_tube": "Test Tube",
+  "item.morebo.beaker": "Beaker",
+  "item.morebo.petri_dish": "Petri Dish",
+  "item.morebo.sg": "Test Tube",
+  "tooltip.morebo.chemistry.poured_solution": "§bPoured out solution",
+  "tooltip.morebo.chemistry.chemical": "§7Chemical",
+  "tooltip.morebo.chemistry.empty": "§7Test tube is empty",
+  "tooltip.morebo.chemistry.craft_success": "§aCrafting successful!",
+  "tooltip.morebo.test_tube.solution": "§9[Solution] Contains",
+  "tooltip.morebo.test_tube.solids": "§e[Solids] Contains",
+  "tooltip.morebo.test_tube.solid_item": "  - %s"
+}

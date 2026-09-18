@@ -1,0 +1,15 @@
+{
+  "sm": {
+    "neededitem": [
+      "minecraft:pink_dye",
+      "minecraft:sugar",
+      "minecraft:golden_carrot"
+    ],
+    "needsolution": true,
+    "clearall": true,
+    "output": {
+      "id": "morebo:sm",
+      "count": 1
+    }
+  }
+}

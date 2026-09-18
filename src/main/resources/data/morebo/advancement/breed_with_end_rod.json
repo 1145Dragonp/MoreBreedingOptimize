@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:husbandry/breed_an_animal",
+  "display": {
+    "icon": {
+      "id": "minecraft:end_rod"
+    },
+    "title": {
+      "translate": "advancements.morebo.breed_with_end_rod.title"
+    },
+    "description": {
+      "translate": "advancements.morebo.breed_with_end_rod.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "breed_with_end_rod": {
+      "trigger": "morebo:breed_with_end_rod"
+    }
+  }
+}

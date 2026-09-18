@@ -1,0 +1,20 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "morebo:item/sg"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "morebo:item/test_tube_2"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "morebo:item/test_tube_3"
+    }
+  ]
+}
