@@ -29,6 +29,10 @@ public class SMItem {
             new Item(new Item.Properties().rarity(Rarity.UNCOMMON))
     );
 
+    public static final Supplier<Item> syringe = ITEMS.register("nullsyringe", () ->
+            new Item(new Item.Properties())
+    );
+
     public static final Supplier<Item> SMT = ITEMS.register("smt", () -> new LustItem(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64)) );
 
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, MainClass.MODID);

@@ -3,6 +3,9 @@
   "advancements.morebo.breed_with_end_rod.description": "Use an End Rod to induce breeding on an animal",
   "item.morebo.sm": "Aphrodisiac",
   "item.morebo.smt": "Aphrodisiac Syringe",
+  "item.morebo.nullsyringe": "Empty Syringe",
+  "item.morebo.dogm": "Wild Dog Milk",
+  "item.morebo.jnhc": "Raw Cola",
   "effect.morebo.lust": "Lust",
   "itemGroup.morebo.my_creative_tab": "Medical Supplies",
   "item.morebo.test_tube": "Test Tube",
@@ -15,5 +18,16 @@
   "tooltip.morebo.chemistry.craft_success": "§aCrafting successful!",
   "tooltip.morebo.test_tube.solution": "§9[Solution] Contains",
   "tooltip.morebo.test_tube.solids": "§e[Solids] Contains",
-  "tooltip.morebo.test_tube.solid_item": "  - %s"
+  "tooltip.morebo.test_tube.solid_item": "  - %s",
+  "morebo.configuration.section.morebo.common.toml.title": "MoreBreedingOptimize · Configuration",
+  "morebo.configuration.thrustStrength": "Thrust Strength",
+  "morebo.configuration.thrustStrength.tooltip": "Thrust strength applied to animals during breeding (recommended: 0.1 ~ 2.0)",
+  "morebo.configuration.dropChance": "Drop Chance",
+  "morebo.configuration.dropChance.tooltip": "Chance to drop a water/milk bucket during breeding (0.0 ~ 1.0)",
+  "morebo.configuration.fatalDieChance": "Fatal Death Chance",
+  "morebo.configuration.fatalDieChance.tooltip": "Chance of the animal dying suddenly and dropping an End Rod during breeding (0.0 ~ 1.0)",
+  "morebo.configuration.detectionrange": "Detection Range",
+  "morebo.configuration.detectionrange.tooltip": "Distance for the kiss event to trigger (0.0 ~ 20.0)",
+  "morebo.configuration.pfed": "Player Drop Ratio",
+  "morebo.configuration.pfed.tooltip": "Drop ratio when the player triggers drops by rapid sneaking on an End Rod (0.0 ~ 10.0)"
 }

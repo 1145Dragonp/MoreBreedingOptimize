@@ -26,6 +26,7 @@ public class MDCT {
                     // 添加物品到标签页
                     .displayItems((parameters, output) -> {
                         output.accept(SMItem.SM.get());
+                        output.accept(SMItem.syringe.get());
                         output.accept(SMItem.SMT.get());
                         output.accept(ChemistryItem.TEST_TUBE.get());
                     })

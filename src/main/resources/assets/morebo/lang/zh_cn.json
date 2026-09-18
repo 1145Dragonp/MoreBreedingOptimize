@@ -1,10 +1,13 @@
 {
   "advancements.morebo.breed_with_end_rod.title": "种公！",
-  "advancements.morebo.breed_with_end_rod.description": "使用末地烛对动物进行催生",
+  "advancements.morebo.breed_with_end_rod.description": "使用末地烛对动物进行配种",
   "item.morebo.sm": "春药",
   "item.morebo.smt": "春药注射器",
+  "item.morebo.nullsyringe": "空注射器",
+  "item.morebo.dogm": "野生狗奶",
+  "item.morebo.jnhc": "生可乐",
   "effect.morebo.lust": "发情",
-  "itemGroup.morebo.my_creative_tab": "医学药品",
+  "itemGroup.morebo.my_creative_tab": "更多繁殖优化",
   "item.morebo.test_tube": "试管",
   "item.morebo.beaker": "烧杯",
   "item.morebo.petri_dish": "培养皿",
@@ -15,5 +18,16 @@
   "tooltip.morebo.chemistry.craft_success": "§a合成成功！",
   "tooltip.morebo.test_tube.solution": "§9[溶液] 包含",
   "tooltip.morebo.test_tube.solids": "§e[固体] 包含",
-  "tooltip.morebo.test_tube.solid_item": "  - %s"
+  "tooltip.morebo.test_tube.solid_item": "  - %s",
+  "morebo.configuration.section.morebo.common.toml.title": "更多繁殖优化 · 配置",
+  "morebo.configuration.thrustStrength": "推力力度",
+  "morebo.configuration.thrustStrength.tooltip": "繁殖时施加到动物身上的推力力度（建议范围 0.1 ~ 2.0）",
+  "morebo.configuration.dropChance": "掉落概率",
+  "morebo.configuration.dropChance.tooltip": "繁殖过程中掉落水桶/牛奶桶的概率（0.0 ~ 1.0）",
+  "morebo.configuration.fatalDieChance": "意外死亡概率",
+  "morebo.configuration.fatalDieChance.tooltip": "繁殖时动物意外死亡并掉落末地烛的概率（0.0 ~ 1.0）",
+  "morebo.configuration.detectionrange": "检测距离",
+  "morebo.configuration.detectionrange.tooltip": "触发亲吻事件的检测距离（0.0 ~ 20.0）",
+  "morebo.configuration.pfed": "玩家掉落概率比",
+  "morebo.configuration.pfed.tooltip": "玩家在末地烛上快速潜行触发掉落物的概率比（0.0 ~ 10.0）"
 }

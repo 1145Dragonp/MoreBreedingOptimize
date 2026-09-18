@@ -5,6 +5,7 @@ build/
 .idea/
 .github/
 .git/
+src/main/resources/assets/morebo/lang/Translation vector.json
 
 
 
