@@ -35,7 +35,7 @@ public class GrowthHormoneHandler {
 
         // 必须真的是幼年
         if (!mob.isBaby() || mob.getAge() >= 0) {
-            LOGGER.info("[GH] 目标不是幼年生物，跳过。age={}", mob.getAge());
+            LOGGER.info("[GH] 03 age={}", mob.getAge());
             return;
         }
 
@@ -45,7 +45,7 @@ public class GrowthHormoneHandler {
         int currentAge = mob.getAge();       // 负数，如 -24000
         int remainingTicks = -currentAge;    // 正数，如 24000
 
-        LOGGER.info("[GH] 处理前 age={}, 剩余={}刻({}秒)",
+        LOGGER.info("[GH] 01 age={}, 剩余={}刻({}秒)",
                 currentAge, remainingTicks, remainingTicks / 20.0);
 
         // 核心逻辑：直接 setAge，不用 ageUp
@@ -55,7 +55,7 @@ public class GrowthHormoneHandler {
             mob.setAge(-TARGET_REMAINING_TICKS);  // 设成 -100，剩5秒成年
         }
 
-        LOGGER.info("[GH] 处理后 age={}", mob.getAge());
+        LOGGER.info("[GH] 02 age={}", mob.getAge());
 
         ServerPlayer player = (ServerPlayer) event.getEntity();
 
