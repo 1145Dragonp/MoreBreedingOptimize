@@ -1,0 +1,15 @@
+{
+  "gh": {
+    "neededitem": [
+      "minecraft:golden_carrot",
+      "minecraft:glistering_melon_slice",
+      "minecraft:redstone"
+    ],
+    "needsolution": true,
+    "clearall": true,
+    "output": {
+      "id": "morebo:ghw",
+      "count": 32
+    }
+  }
+}

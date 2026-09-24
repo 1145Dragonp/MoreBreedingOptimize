@@ -44,7 +44,7 @@ public class BreedTrigger extends SimpleCriterionTrigger<BreedTrigger.Instance> 
      * 本触发器无额外条件，只要 trigger() 被调用就授予成就。
      */
     public record Instance(Optional<ContextAwarePredicate> player)
-            implements SimpleCriterionTrigger.SimpleInstance {
+            implements SimpleInstance {
 
         /**
          * 序列化/反序列化 Codec

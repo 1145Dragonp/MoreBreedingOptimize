@@ -21,7 +21,8 @@ import MoreBreedingOptimize.MD.DOGM.DOGMITEM;
 import MoreBreedingOptimize.MD.JNHC.JNHCITEM;
 import MoreBreedingOptimize.MD.MDCT;
 import MoreBreedingOptimize.MD.ChemistrySynthesis.ChemistryItem;
-
+import MoreBreedingOptimize.MD.growthhormone.GrowthHormoneItems;
+import MoreBreedingOptimize.MD.IVF.IVFITEM;
 
 
 //import static com.tacz.guns.GunMod.container;
@@ -40,20 +41,6 @@ public class MainClass {
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // ✅ 子弹复制器方块：属性完全内联，不依赖任何外部类
-   // public static final DeferredBlock<Block> BULLET_REPLICATOR = BLOCKS.registerSimpleBlock(
-    //        "bullet_replicator",
-        //    BlockBehaviour.Properties.of()
-              //      .mapColor(MapColor.METAL)
-                //    .strength(3.5F)
-               //     .sound(SoundType.METAL)
-                  //  .requiresCorrectToolForDrops()
-    //);
-
-    // ✅ 子弹复制器方块物品：直接绑定上方块
-    //public static final DeferredItem<BlockItem> BULLET_REPLICATOR_ITEM =
-           // ITEMS.registerSimpleBlockItem(BULLET_REPLICATOR);
-
 
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -67,6 +54,10 @@ public class MainClass {
         DOGMITEM.register(modEventBus);
         JNHCITEM.register(modEventBus);
         ChemistryItem.register(modEventBus);
+        GrowthHormoneItems.register(modEventBus);
+        IVFITEM.register(modEventBus);
+        // @AI 注册 IVF 数据组件（source_entity 等），漏注册会导致 DeferredHolder 未绑定、悬停 tooltip 时 NPE 崩溃
+        MoreBreedingOptimize.MD.IVF.ModDataComponents.register(modEventBus);
 
 
 
@@ -94,21 +85,13 @@ public class MainClass {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
 
-        //if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
-         //   LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-       // }
 
-       // LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
-
-        //Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
     }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            // ✅ 将子弹复制器加入建筑方块创造模式标签页
-            //event.accept(BULLET_REPLICATOR_ITEM);
-            //event.accept(EXAMPLE_BLOCK_ITEM);
+
         }
     }
 

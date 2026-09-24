@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "morebo:ghw"
+    },
+    {
+      "item": "morebo:ghw"
+    },
+    {
+      "item":  "morebo:nullsyringe"
+    }
+  ],
+  "result": {
+    "id": "morebo:gh",
+    "count": 1
+  }
+}

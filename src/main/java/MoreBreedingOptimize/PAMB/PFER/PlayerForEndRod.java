@@ -18,7 +18,7 @@ import java.util.UUID;
 import MoreBreedingOptimize.Config;
 
 @EventBusSubscriber(modid = MainClass.MODID)
-public class playerforendrod {
+public class PlayerForEndRod {
 
     // 记录每个玩家专属数据的容器
     private static final Map<UUID, SneakData> PLAYER_DATA = new HashMap<>();

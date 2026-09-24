@@ -1,14 +1,3 @@
-run/
-.gradle/
-build/
-.workbuddy/
-.idea/
-.github/
-.git/
-src/main/resources/assets/morebo/lang/Translation vector.json
-
-
-
 ### Gradle ###
 .gradle
 build/

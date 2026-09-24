@@ -9,6 +9,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import MoreBreedingOptimize.MD.growthhormone.GrowthHormoneItems;
+import MoreBreedingOptimize.MD.IVF.IVFITEM;
 
 public class MDCT {
 
@@ -22,13 +24,16 @@ public class MDCT {
                     // 设置标签页的显示名称（支持多语言）
                     .title(Component.translatable("itemGroup.morebo.my_creative_tab"))
                     // 设置标签页的图标
-                    .icon(() -> new ItemStack(SMItem.SM.get()))
+                    .icon(() -> new ItemStack(ChemistryItem.TEST_TUBE.get()))
                     // 添加物品到标签页
                     .displayItems((parameters, output) -> {
                         output.accept(SMItem.SM.get());
+                        output.accept(GrowthHormoneItems.GHW.get());
                         output.accept(SMItem.syringe.get());
                         output.accept(SMItem.SMT.get());
+                        output.accept(GrowthHormoneItems.GH.get());
                         output.accept(ChemistryItem.TEST_TUBE.get());
+                        output.accept(IVFITEM.BTS.get());
                     })
                     .build());
 }

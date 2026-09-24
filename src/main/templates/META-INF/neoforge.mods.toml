@@ -43,7 +43,7 @@ displayName="${mod_name}" #mandatory
 
 # The authors of the mod, displayed in the mod UI (optional)
 authors="${mod_authors}"
-
+#authors="Mrmagicdragon"
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 Example mod description.
