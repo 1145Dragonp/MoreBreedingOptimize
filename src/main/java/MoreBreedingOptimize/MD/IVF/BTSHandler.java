@@ -55,7 +55,7 @@ public class BTSHandler {
 
         ServerPlayer player = (ServerPlayer) event.getEntity();
 
-        // 必须手持玻璃瓶来抽血
+        // 必须手持玻璃瓶来抽血 -> 已取消设定
         // 必须手持BTS物品来抽血
         if (!stack.is(getBTSItem())) {
             //log.info("[BTS] 抽血跳过：手持物品不是BTS，而是 {}");
@@ -131,7 +131,7 @@ public class BTSHandler {
         } else {
             // 空瓶（无来源数据）时提示这是空样本，方便区分
             event.getToolTip().add(
-                    Component.literal("§8空样本（右键成年动物采集）")
+                    Component.literal("§8空样本（右键动物采集）")
             );
         }
     }
