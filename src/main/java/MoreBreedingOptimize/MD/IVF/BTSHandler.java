@@ -45,7 +45,7 @@ public class BTSHandler {
     }
 
     /**
-     * 右键成年动物抽血 -> 获得带生物ID的 BTS 物品
+     * 右键动物抽血 -> 获得带生物ID的 BTS 物品
      */
     @SubscribeEvent
     public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
@@ -58,12 +58,12 @@ public class BTSHandler {
         // 必须手持玻璃瓶来抽血 -> 已取消设定
         // 必须手持BTS物品来抽血
         if (!stack.is(getBTSItem())) {
-            //log.info("[BTS] 抽血跳过：手持物品不是BTS，而是 {}");
+            //log.info("[BTS] E2");
             return;
         }
         if  (!(event.getTarget() instanceof LivingEntity mob)) {
             // @AI 诊断日志：目标是幼年动物或非 AgeableMob 时提示原因
-            log.info("[BTS] 01",
+            log.info("[BTS] E1",
                     BuiltInRegistries.ENTITY_TYPE.getKey(event.getTarget().getType()));
             return;
         }
@@ -87,7 +87,7 @@ public class BTSHandler {
             // 设置 CustomModelData=1，触发 bts.json 的 overrides 切换到装血纹理 bts1
             bts.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(MODEL_FILLED));
             player.addItem(bts);
-            log.info("[BTS] 抽血成功：{} -> 获得带 {} 来源的 BTS",
+            log.info("[BTS] 00",
                     player.getName().getString(), entityId);
         }
         // 只有在成功执行了抽血逻辑时才取消事件
