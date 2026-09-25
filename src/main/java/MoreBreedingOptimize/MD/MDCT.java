@@ -12,6 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import MoreBreedingOptimize.MD.growthhormone.GrowthHormoneItems;
 import MoreBreedingOptimize.MD.IVF.IVFITEM;
 
+
 public class MDCT {
 
     // 2. 在这里正式声明 CREATIVE_TABS 变量！
@@ -34,6 +35,7 @@ public class MDCT {
                         output.accept(GrowthHormoneItems.GH.get());
                         output.accept(ChemistryItem.TEST_TUBE.get());
                         output.accept(IVFITEM.BTS.get());
+                        output.accept(SMItem.LB.get());
                     })
                     .build());
 }

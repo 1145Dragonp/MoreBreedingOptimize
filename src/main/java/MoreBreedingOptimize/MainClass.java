@@ -23,6 +23,7 @@ import MoreBreedingOptimize.MD.MDCT;
 import MoreBreedingOptimize.MD.ChemistrySynthesis.ChemistryItem;
 import MoreBreedingOptimize.MD.growthhormone.GrowthHormoneItems;
 import MoreBreedingOptimize.MD.IVF.IVFITEM;
+import MoreBreedingOptimize.MD.SM.ModDataAttachments;
 
 
 //import static com.tacz.guns.GunMod.container;
@@ -58,6 +59,7 @@ public class MainClass {
         IVFITEM.register(modEventBus);
         // @AI 注册 IVF 数据组件（source_entity 等），漏注册会导致 DeferredHolder 未绑定、悬停 tooltip 时 NPE 崩溃
         MoreBreedingOptimize.MD.IVF.ModDataComponents.register(modEventBus);
+        ModDataAttachments.ATTACHMENT_TYPES.register(modEventBus);
 
 
 

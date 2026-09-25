@@ -26,14 +26,19 @@ public class SMItem {
      * 稀有度：稀有 (UNCOMMON)，显示为黄色
      */
     public static final Supplier<Item> SM = ITEMS.register("sm", () ->
-            new Item(new Item.Properties().rarity(Rarity.UNCOMMON))
+            new Item(new Item.Properties().rarity(Rarity.EPIC))
     );
 
     public static final Supplier<Item> syringe = ITEMS.register("nullsyringe", () ->
             new Item(new Item.Properties())
     );
 
-    public static final Supplier<Item> SMT = ITEMS.register("smt", () -> new LustItem(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(64)) );
+    public static final Supplier<Item> SMT = ITEMS.register("smt", () -> new LustItem(new Item.Properties().rarity(Rarity.EPIC).stacksTo(64)) );
+
+    public static final Supplier<Item> LB = ITEMS.register("lovebow", () ->
+            new LovelowBowItem()
+    );
+
 
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, MainClass.MODID);
     public static final DeferredHolder<MobEffect, MobEffect> LUST = MOB_EFFECTS.register("lust", LustEffect::new);

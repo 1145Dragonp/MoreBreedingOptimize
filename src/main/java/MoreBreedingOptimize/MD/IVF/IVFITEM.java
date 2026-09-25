@@ -18,6 +18,8 @@ public class IVFITEM {
             new Item(new Item.Properties().rarity(Rarity.EPIC))
     );
 
+
+
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
 
