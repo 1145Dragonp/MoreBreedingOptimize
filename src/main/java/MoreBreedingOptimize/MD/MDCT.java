@@ -11,7 +11,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import MoreBreedingOptimize.MD.growthhormone.GrowthHormoneItems;
 import MoreBreedingOptimize.MD.IVF.IVFITEM;
-
+import MoreBreedingOptimize.MD.DOGM.DOGMITEM;
+import MoreBreedingOptimize.MD.JNHC.JNHCITEM;
 
 public class MDCT {
 
@@ -36,6 +37,9 @@ public class MDCT {
                         output.accept(ChemistryItem.TEST_TUBE.get());
                         output.accept(IVFITEM.BTS.get());
                         output.accept(SMItem.LB.get());
+                        output.accept(DOGMITEM.DOGM.get());
+                        output.accept(JNHCITEM.JNHC.get());
+                        output.accept(ChemistryItem.RE_X.get());
                     })
                     .build());
 }

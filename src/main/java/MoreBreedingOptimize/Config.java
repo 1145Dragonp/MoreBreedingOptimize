@@ -34,6 +34,23 @@ public class Config {
             .comment("玩家自慰掉落物概率比")
             .defineInRange("pfed", 0.5, 0.0, 10.0);
 
+    public static final ModConfigSpec.ConfigValue<String> APIRUL = BUILDER
+            .comment("api rul")
+            .define("apirul", "https://");
+
+    public static final ModConfigSpec.ConfigValue<String> APIKEY = BUILDER
+            .comment("api KEY")
+            .define("apikey", "x");
+
+    public static final ModConfigSpec.ConfigValue<String> MODEL_NAME  = BUILDER
+            .comment("model_name")
+            .define("ainame", "name");
+
+    // Maximum token limit
+    public static final ModConfigSpec.DoubleValue MAX_TOKEN_LINIT= BUILDER
+            .comment("Maximum token limit")
+            .defineInRange("max_token_limit", 0.5, 0.0, 10.0);
+
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 

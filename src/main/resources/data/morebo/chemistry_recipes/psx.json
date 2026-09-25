@@ -1,0 +1,16 @@
+{
+  "gh": {
+    "neededitem": [
+      "minecraft:iron_ingot",
+      "minecraft:coal",
+      "minecraft:gunpowder",
+      "minecraft:blaze_powder"
+    ],
+    "needsolution": false,
+    "clearall": true,
+    "output": {
+      "id": "morebo:rex",
+      "count": 9
+    }
+  }
+}

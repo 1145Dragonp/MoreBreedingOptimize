@@ -2,6 +2,7 @@ package MoreBreedingOptimize.MD.ChemistrySynthesis;
 
 import MoreBreedingOptimize.MainClass;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -20,6 +21,8 @@ public class ChemistryItem {
     // 2. 注册新的试管物品
     // ✅ 修复：传入 new Item.Properties() 参数
     public static final Supplier<Item> TEST_TUBE = ITEMS.register("test_tube", () -> new TestTubeItem(new Item.Properties()));
+
+    public static final Supplier<Item> RE_X = ITEMS.register("rex",() -> new Item(new Item.Properties().rarity(Rarity.EPIC)));
 
     public static void register(IEventBus modEventBus) {
         // 注册所有物品

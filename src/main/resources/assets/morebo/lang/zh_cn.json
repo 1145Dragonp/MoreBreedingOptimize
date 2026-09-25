@@ -9,8 +9,11 @@
   "item.morebo.lovebow": "丘比特之弓",
   "item.morebo.nullsyringe": "空注射器",
   "item.morebo.dogm": "野生狗奶",
-  "item.morebo.jnhc": "生可乐",
+  "item.morebo.jnhc": "日本进口生可乐",
   "effect.morebo.lust": "发情",
+  "effect.morebo.eternal": "永恒",
+  "effect.morebo.bzstronger": "宾州强化",
+  "item.morebo.rex": "放射性元素X",
   "itemGroup.morebo.my_creative_tab": "更多繁殖优化",
   "item.morebo.test_tube": "试管",
   "item.morebo.beaker": "烧杯",
@@ -33,5 +36,9 @@
   "morebo.configuration.detectionrange": "检测距离",
   "morebo.configuration.detectionrange.tooltip": "触发亲吻事件的检测距离（0.0 ~ 20.0）",
   "morebo.configuration.pfed": "玩家掉落概率比",
+  "morebo.configuration.apirul": "API的地址",
+  "morebo.configuration.apikey": "API KEY",
+  "morebo.configuration.ainame": "模型名称",
+  "morebo.configuration.max_token_limit": "token最大限制",
   "morebo.configuration.pfed.tooltip": "玩家在末地烛上快速潜行触发掉落物的概率比（0.0 ~ 10.0）"
 }
