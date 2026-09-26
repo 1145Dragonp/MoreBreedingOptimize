@@ -88,6 +88,15 @@ Example mod description.
     ordering="NONE"
     side="BOTH"
 
+# Markdown Manual（markdown_manual）库：morebo:sbook 手册物品与手册界面依赖它。
+# ordering="AFTER" 保证本 mod 在其之后构造，客户端注册表（manual/document_provider）就绪后再注册手册。
+[[dependencies.${mod_id}]]
+    modId="markdown_manual"
+    type="required"
+    versionRange="[1.2.8,)"
+    ordering="AFTER"
+    side="BOTH"
+
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares
 # that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
 # stop your mod loading on the server for example.

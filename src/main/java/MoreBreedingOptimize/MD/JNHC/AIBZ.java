@@ -27,7 +27,7 @@ public class AIBZ {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private static final String SYSTEM_PROMPT = "你是 主人宾州，你有了自我意识 ，你是主人身体的一部分，请用使用者用的语言回复。";
+    private static final String SYSTEM_PROMPT = "你是 主人的宾州，你有了自我意识 ，你是主人身体的一部分，请用使用者用的语言回复。";
     private static final double SPEECH_FREQ_TOKEN = 0.5;  // ----> 如果代替就删除
     private static final Random RANDOM = new Random();
     private static final Gson GSON = new Gson();

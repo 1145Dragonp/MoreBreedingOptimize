@@ -3,6 +3,7 @@
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/**/build/
+开发记录.md
 
 ### IntelliJ IDEA ###
 .idea/

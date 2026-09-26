@@ -1,4 +1,4 @@
-package MoreBreedingOptimize.MD;
+package MoreBreedingOptimize;
 
 // 1. 导入所有必须的基础类
 import MoreBreedingOptimize.MD.ChemistrySynthesis.ChemistryItem;
@@ -13,6 +13,8 @@ import MoreBreedingOptimize.MD.growthhormone.GrowthHormoneItems;
 import MoreBreedingOptimize.MD.IVF.IVFITEM;
 import MoreBreedingOptimize.MD.DOGM.DOGMITEM;
 import MoreBreedingOptimize.MD.JNHC.JNHCITEM;
+import MoreBreedingOptimize.MD.book.BookItem;
+import MoreBreedingOptimize.MD.book.ChemistryBookItem;
 
 public class MDCT {
 
@@ -29,6 +31,8 @@ public class MDCT {
                     .icon(() -> new ItemStack(ChemistryItem.TEST_TUBE.get()))
                     // 添加物品到标签页
                     .displayItems((parameters, output) -> {
+                        output.accept(BookItem.SBOOK.get());
+                        output.accept(ChemistryBookItem.HBOOK.get());
                         output.accept(SMItem.SM.get());
                         output.accept(GrowthHormoneItems.GHW.get());
                         output.accept(SMItem.syringe.get());

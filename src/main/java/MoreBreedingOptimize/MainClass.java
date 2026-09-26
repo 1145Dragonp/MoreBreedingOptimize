@@ -19,7 +19,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import MoreBreedingOptimize.MD.SM.SMItem;
 import MoreBreedingOptimize.MD.DOGM.DOGMITEM;
 import MoreBreedingOptimize.MD.JNHC.JNHCITEM;
-import MoreBreedingOptimize.MD.MDCT;
 import MoreBreedingOptimize.MD.ChemistrySynthesis.ChemistryItem;
 import MoreBreedingOptimize.MD.growthhormone.GrowthHormoneItems;
 import MoreBreedingOptimize.MD.IVF.IVFITEM;
@@ -57,6 +56,15 @@ public class MainClass {
         ChemistryItem.register(modEventBus);
         GrowthHormoneItems.register(modEventBus);
         IVFITEM.register(modEventBus);
+        // 注册模组手册物品（morebo:sbook）
+        MoreBreedingOptimize.MD.book.BookItem.register(modEventBus);
+        // 注册化学书手册物品（morebo:hbook）
+        MoreBreedingOptimize.MD.book.ChemistryBookItem.register(modEventBus);
+        // 仅客户端：注册 Markdown Manual 的手册与文档提供者（markdown_manual 的注册表只在客户端存在，
+        // 且须在其构造完成之后注册——neoforge.mods.toml 已声明 ordering="AFTER"）
+        if (net.neoforged.fml.loading.FMLEnvironment.dist.isClient()) {
+            MoreBreedingOptimize.MD.book.BookManualClient.register();
+        }
         // 注册 IVF 数据组件（source_entity 等），漏注册会导致 DeferredHolder 未绑定、悬停 tooltip 时 NPE 崩溃
         MoreBreedingOptimize.MD.IVF.ModDataComponents.register(modEventBus);
         ModDataAttachments.ATTACHMENT_TYPES.register(modEventBus);

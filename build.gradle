@@ -115,6 +115,40 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+//mod jei
+
+repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        // forRepositories(fg.repository) // Uncomment when using ForgeGradle
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
+}
+
+// Standard Gradle dependency
+dependencies {
+    implementation "maven.modrinth:u6dRKJwZ:Y16jFgP5"
+    implementation "maven.modrinth:nPQ9xkPg:1UL3EMjx"
+    implementation "maven.modrinth:lhGA9TYQ:1IiqEQGl"
+
+}
+
+//mod md
+
+
+
+
+
+
+
+
 dependencies {
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

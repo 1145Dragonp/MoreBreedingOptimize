@@ -29,6 +29,8 @@ public class BZQHChatListener {
         // 2. 检查玩家是否拥有 buff，没有 buff 直接放行
         var effectHolder = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(JNHCITEM.BZSTRONGER.get());
         if (!player.hasEffect(effectHolder)) {
+            // @AI 修复：没有 buff 时原来静默放行，玩家不知道为什么 @滨州 没反应；补一条只有本人可见的提示
+            player.displayClientMessage(Component.literal("§7[滨州] 你需要先饮用日本进口生可乐（宾州强化效果）才能和我对话"), false);
             return;
         }
 
@@ -68,14 +70,17 @@ public class BZQHChatListener {
 
         // 5. AI 返回结果，去掉了 [宾州] 标签
         aiFuture.whenComplete((reply, throwable) -> {
-            if (player.getServer() != null) {
-                player.getServer().execute(() -> {
-                    if (reply != null) {
-                        // 直接发送 AI 回复文本，不再加任何标签
-                        player.sendSystemMessage(Component.literal("<滨州>" + reply));
-                    }
-                });
-            }
+                if (player.getServer() != null) {
+                    player.getServer().execute(() -> {
+                        if (reply != null) {
+                            // 直接发送 AI 回复文本，不再加任何标签
+                            player.sendSystemMessage(Component.literal("<滨州>" + reply));
+                        } else {
+                            // @AI 修复：请求失败时原来什么都不显示，看起来像"没反应"；补一条失败提示，具体原因看服务器日志 [JNHC-AI]
+                            player.sendSystemMessage(Component.literal("§c<滨州> 没有回应……（AI 请求失败，原因见服务器日志 [JNHC-AI]）"));
+                        }
+                    });
+                }
         });
     }
 }
