@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "morebo:sg"
+    },
+    {
+      "item": "minecraft:shears"
+    }
+  ],
+  "result": {
+    "id": "morebo:sbook",
+    "count": 1
+  }
+}
