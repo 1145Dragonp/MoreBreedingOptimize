@@ -1,0 +1,12 @@
+{
+"required": true,
+"minVersion": "0.8",
+"package": "magicdragin.morebreedingoptimize.mixin",
+"compatibilityLevel": "JAVA_21",
+"mixins": [
+"HeaderSegmentMixin"
+],
+"injectors": {
+"defaultRequire": 1
+}
+}

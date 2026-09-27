@@ -3,7 +3,7 @@
   "category": "misc",
   "pattern": [
     " P ",
-    " P ",
+    " B ",
     " B "
   ],
   "key": {
@@ -12,10 +12,13 @@
     },
     "B": {
       "item": "minecraft:glass"
+    },
+    "C": {
+      "item": "minecraft:arrow"
     }
   },
   "result": {
-    "id": "morebo:test_tube",
-    "count": 3
+    "id": "morebo:morebo:nullsyringe",
+    "count": 1
   }
 }

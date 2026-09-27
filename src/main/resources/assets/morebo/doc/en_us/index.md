@@ -1,6 +1,6 @@
-# MoreBreedingOptimize
+# mrmagicdragin.MoreBreedingOptimize
 
-Welcome to **MoreBreedingOptimize**! This manual introduces the mod's main items and gameplay.
+Welcome to **mrmagicdragin.MoreBreedingOptimize**! This manual introduces the mod's main items and gameplay.
 
 ## Main Features
 
@@ -17,7 +17,7 @@ Welcome to **MoreBreedingOptimize**! This manual introduces the mod's main items
 - **Cupid's Bow (lovebow)**: Shoots arrows of love that trigger kiss events.
 - **Wild Dog Milk (dogm)**: A special drink.
 - **Raw Cola (jnhc)**: Grants the **Benzhou Enhancement** effect; while active, type `@滨州 <your message>` in chat to talk to Benzhou.
-- **MoreBreedingOptimize Manual (sbook)**: The book you are reading right now.
+- **mrmagicdragin.MoreBreedingOptimize Manual (sbook)**: The book you are reading right now.
 
 ## Effect List
 

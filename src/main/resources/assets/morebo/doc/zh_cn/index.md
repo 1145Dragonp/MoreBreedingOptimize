@@ -1,4 +1,4 @@
-# 更多繁殖优化（MoreBreedingOptimize）
+# 更多繁殖优化（mrmagicdragin.MoreBreedingOptimize）
 
 欢迎使用 **更多繁殖优化**！本手册介绍模组的主要物品与玩法。
 

@@ -1,4 +1,4 @@
-# MoreBreedingOptimize（更多繁殖优化）
+# mrmagicdragin.MoreBreedingOptimize（更多繁殖优化）
 
 一个面向 Minecraft 1.21.1 / NeoForge 的动物繁殖玩法扩展模组，把原版枯燥的"喂食 → 等待 → 生崽"变得更有趣、更高效，也更有"节目效果"。
 
