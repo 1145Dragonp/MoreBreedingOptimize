@@ -16,7 +16,7 @@ public class ChemistryItem {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MainClass.MODID);
 
     // 1. 注册原有的 sg 物品
-    //public static final Supplier<Item> SG = ITEMS.register("sg", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> SG = ITEMS.register("sg", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     // 2. 注册新的试管物品
     // ✅ 修复：传入 new Item.Properties() 参数

@@ -3,6 +3,7 @@ package magicdragin.morebreedingoptimize;
 // 1. 导入所有必须的基础类
 import magicdragin.morebreedingoptimize.MD.chemistrysynthesis.ChemistryItem;
 import magicdragin.morebreedingoptimize.MD.SM.SMItem;
+import magicdragin.morebreedingoptimize.nb.NeuterBlockItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -44,6 +45,8 @@ public class MDCT {
                         output.accept(DOGMITEM.DOGM.get());
                         output.accept(JNHCITEM.JNHC.get());
                         output.accept(ChemistryItem.RE_X.get());
+                        output.accept(NeuterBlockItem.LHQ.get());
+
                     })
                     .build());
 }

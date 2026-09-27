@@ -1,4 +1,4 @@
-package magicdragin.morebreedingoptimize.ADV;
+package magicdragin.morebreedingoptimize.adv;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

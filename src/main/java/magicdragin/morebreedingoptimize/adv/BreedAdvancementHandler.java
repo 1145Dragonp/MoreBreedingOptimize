@@ -1,4 +1,4 @@
-package magicdragin.morebreedingoptimize.ADV;
+package magicdragin.morebreedingoptimize.adv;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Animal;

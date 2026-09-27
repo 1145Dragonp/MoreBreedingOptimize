@@ -1,10 +1,11 @@
 package magicdragin.morebreedingoptimize;
 
-import magicdragin.morebreedingoptimize.ADV.ModTriggers;
+import magicdragin.morebreedingoptimize.adv.ModTriggers;
 import magicdragin.morebreedingoptimize.MD.IVF.ModDataComponents;
 import magicdragin.morebreedingoptimize.MD.book.BookItem;
 import magicdragin.morebreedingoptimize.MD.book.BookManualClient;
 import magicdragin.morebreedingoptimize.MD.book.ChemistryBookItem;
+import magicdragin.morebreedingoptimize.nb.NeuterBlockItem;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -65,6 +66,8 @@ public class MainClass {
         BookItem.register(modEventBus);
         // 注册化学书手册物品（morebo:hbook）
         ChemistryBookItem.register(modEventBus);
+        NeuterBlockItem.register(modEventBus);
+
         // 仅客户端：注册 Markdown Manual 的手册与文档提供者（markdown_manual 的注册表只在客户端存在，
         // 且须在其构造完成之后注册——neoforge.mods.toml 已声明 ordering="AFTER"）
         if (net.neoforged.fml.loading.FMLEnvironment.dist.isClient()) {

@@ -1,7 +1,6 @@
 package magicdragin.morebreedingoptimize.nb;
 
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.animal.Animal;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
@@ -32,21 +31,16 @@ public class NeuterBlockHandler {
         Mob parentA = event.getParentA();
         Mob parentB = event.getParentB();
 
-        // 只处理动物繁殖
-        if (!(parentA instanceof Animal animalA) || !(parentB instanceof Animal animalB)) {
-            return;
-        }
-
-        // 检查父方或母方是否已被绝育
-        if (ScissorsNeuterHandler.isNeutered(animalA) || ScissorsNeuterHandler.isNeutered(animalB)) {
+        // 检查父方或母方是否已被绝育（适用于所有可繁殖生物，村民等非 Animal 也生效）
+        if (ScissorsNeuterHandler.isNeutered(parentA) || ScissorsNeuterHandler.isNeutered(parentB)) {
             // 取消繁殖
             event.setCanceled(true);
 
             log.info("[mrmagicdragin.morebreedingoptimize] Neuter block! Breeding canceled between {} x {} at {} & {}",
-                    animalA.getType(),
-                    animalB.getType(),
-                    animalA.blockPosition(),
-                    animalB.blockPosition());
+                    parentA.getType(),
+                    parentB.getType(),
+                    parentA.blockPosition(),
+                    parentB.blockPosition());
         }
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -19,12 +20,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 剪刀绝育处理器
+ * 剪刀/老虎钳绝育处理器
  *
- * 玩家手持剪刀对任意动物右键时：
- * 1. 消耗剪刀耐久
- * 2. 掉落 2 个鸡蛋
- * 3. 给动物打上 NBT 标记 "morebo:neutered" = true
+ * 玩家手持剪刀潜行右键，或手持老虎钳（lhq）直接右键，对任意动物执行绝育：
+ * 1. 消耗工具耐久
+ * 2. 掉落物：剪刀掉 2 个鸡蛋；老虎钳掉 1 个末地烛
+ * 3. 给动物打上 NBT 标记 "morebo:neutered" = true（两者标记完全相同）
  * 4. 被标记的动物无法再繁殖（由 NeuterBlockHandler 拦截）
  * 5. 使用鸡蛋对动物右键可恢复繁殖能力（由 EggRestoreHandler 处理）
  *
@@ -57,22 +58,25 @@ public class ScissorsNeuterHandler {
         Player player = event.getEntity();
         Entity target = event.getTarget();
 
-        // 只关心动物
-        if (!(target instanceof Animal animal)) return;
+        // 适用于所有生物（动物/村民/怪物等），玩家除外
+        if (target instanceof Player) return;
+        if (!(target instanceof LivingEntity living)) return;
 
         // 仅服务端处理核心逻辑
         if (event.getLevel().isClientSide) return;
 
-        // 必须潜行（防止与剪刀剪羊毛冲突）
-        if (!player.isCrouching()) return;
-
-        // 检查玩家手持物品是否为剪刀
+        // 手持物品：剪刀 或 老虎钳（lhq）
         InteractionHand hand = event.getHand();
         ItemStack heldItem = player.getItemInHand(hand);
-        if (!heldItem.is(Items.SHEARS)) return;
+        boolean isShears = heldItem.is(Items.SHEARS);
+        boolean isPliers = heldItem.is(NeuterBlockItem.LHQ.get());
+        if (!isShears && !isPliers) return;
+
+        // 剪刀必须潜行（防止与剪刀剪羊毛冲突）；老虎钳直接右键即可
+        if (isShears && !player.isCrouching()) return;
 
         // 检查动物是否已被绝育
-        CompoundTag tag = animal.getPersistentData();
+        CompoundTag tag = living.getPersistentData();
         if (tag.getBoolean(NEUTERED_TAG)) {
             // 已绝育，提示玩家
             player.sendSystemMessage(Component.literal("该动物已被绝育"));
@@ -88,21 +92,23 @@ public class ScissorsNeuterHandler {
         // 1. 设置 NBT 标记
         tag.putBoolean(NEUTERED_TAG, true);
 
-        // 2. 掉落 2 个鸡蛋
-        for (int i = 0; i < EGG_DROP_COUNT; i++) {
-            ItemEntity egg = new ItemEntity(
+        // 2. 掉落物：剪刀掉 2 个鸡蛋，老虎钳掉 1 个末地烛
+        ItemStack dropStack = isPliers ? new ItemStack(Items.END_ROD) : new ItemStack(Items.EGG);
+        int dropCount = isPliers ? 1 : EGG_DROP_COUNT;
+        for (int i = 0; i < dropCount; i++) {
+            ItemEntity drop = new ItemEntity(
                     serverLevel,
-                    animal.getX(),
-                    animal.getY() + 0.5,
-                    animal.getZ(),
-                    new ItemStack(Items.EGG)
+                    living.getX(),
+                    living.getY() + 0.5,
+                    living.getZ(),
+                    dropStack.copy()
             );
-            egg.setDeltaMovement(
-                    (animal.getRandom().nextDouble() - 0.5) * 0.2,
+            drop.setDeltaMovement(
+                    (living.getRandom().nextDouble() - 0.5) * 0.2,
                     0.2,
-                    (animal.getRandom().nextDouble() - 0.5) * 0.2
+                    (living.getRandom().nextDouble() - 0.5) * 0.2
             );
-            serverLevel.addFreshEntity(egg);
+            serverLevel.addFreshEntity(drop);
         }
 
         // 3. 消耗剪刀耐久（创造模式不消耗）
@@ -115,9 +121,9 @@ public class ScissorsNeuterHandler {
         // 4. 播放剪刀音效
         serverLevel.playSound(
                 null,
-                animal.getX(),
-                animal.getY(),
-                animal.getZ(),
+                living.getX(),
+                living.getY(),
+                living.getZ(),
                 SoundEvents.SHEEP_SHEAR,
                 SoundSource.NEUTRAL,
                 1.0F,
@@ -125,15 +131,15 @@ public class ScissorsNeuterHandler {
         );
 
         // 5. 提示玩家
-        player.sendSystemMessage(Component.literal("已对 " + animal.getName().getString() + " 进行绝育"));
+        player.sendSystemMessage(Component.literal("已对 " + living.getName().getString() + " 进行绝育"));
 
         // 6. 扣动物 0.5 血（绝育的代价）
-        animal.setHealth(animal.getHealth() - 0.5F);
+        living.setHealth(living.getHealth() - 0.5F);
 
         log.info("[mrmagicdragin.morebreedingoptimize] Scissors neuter! Player {} used shears on {} at {}",
                 player.getName().getString(),
-                animal.getType(),
-                animal.blockPosition());
+                living.getType(),
+                living.blockPosition());
 
         // 取消默认交互行为
         event.setCanceled(true);
@@ -146,7 +152,7 @@ public class ScissorsNeuterHandler {
      * @param animal 要检查的动物
      * @return true 表示已绝育，false 表示未绝育
      */
-    public static boolean isNeutered(Animal animal) {
-        return animal.getPersistentData().getBoolean(NEUTERED_TAG);
+    public static boolean isNeutered(LivingEntity living) {
+        return living.getPersistentData().getBoolean(NEUTERED_TAG);
     }
 }

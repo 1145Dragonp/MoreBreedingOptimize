@@ -12,13 +12,10 @@
     },
     "B": {
       "item": "minecraft:glass"
-    },
-    "C": {
-      "item": "minecraft:arrow"
     }
   },
   "result": {
-    "id": "morebo:morebo:nullsyringe",
+    "id": "morebo:nullsyringe",
     "count": 1
   }
 }

@@ -1,4 +1,4 @@
-package magicdragin.morebreedingoptimize.ADV;
+package magicdragin.morebreedingoptimize.adv;
 
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
