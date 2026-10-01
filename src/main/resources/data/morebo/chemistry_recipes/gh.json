@@ -1,9 +1,19 @@
 {
   "gh": {
+    "tiem": 0,
     "neededitem": [
-      "minecraft:golden_carrot",
-      "minecraft:glistering_melon_slice",
-      "minecraft:redstone"
+      {
+        "id": "minecraft:golden_carrot",
+        "count": 1
+      },
+      {
+        "id": "minecraft:glistering_melon_slice",
+        "count": 1
+      },
+      {
+        "id": "minecraft:redstone",
+        "count": 1
+      }
     ],
     "needsolution": true,
     "clearall": true,

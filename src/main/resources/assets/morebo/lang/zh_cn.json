@@ -1,5 +1,6 @@
 {
-  "advancements.morebo.breed_with_end_rod.title": "种公！",
+  
+  "item.morebo.sgc": "石棺","advancements.morebo.breed_with_end_rod.title": "种公！",
   "advancements.morebo.breed_with_end_rod.description": "使用末地烛对动物进行配种",
   "item.morebo.sm": "春药",
   "item.morebo.smt": "春药注射器",
@@ -32,6 +33,8 @@
   "tooltip.morebo.test_tube.solution": "§9[溶液] 包含",
   "tooltip.morebo.test_tube.solids": "§e[固体] 包含",
   "tooltip.morebo.test_tube.solid_item": "  - %s",
+  "tooltip.morebo.test_tube.reacting": "§c反应中：约 %s 秒",
+  "tooltip.morebo.test_tube.full": "§c试管塞满了！",
   "morebo.configuration.section.morebo.common.toml.title": "更多繁殖优化 · 配置",
   "morebo.configuration.thrustStrength": "推力力度",
   "morebo.configuration.thrustStrength.tooltip": "繁殖时施加到动物身上的推力力度（建议范围 0.1 ~ 2.0）",

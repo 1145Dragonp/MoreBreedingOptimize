@@ -1,5 +1,6 @@
 {
-  "advancements.morebo.breed_with_end_rod.title": "Stud!",
+  
+  "item.morebo.sgc": "Sarcophagus","advancements.morebo.breed_with_end_rod.title": "Stud!",
   "advancements.morebo.breed_with_end_rod.description": "Use an End Rod to induce breeding on an animal",
   "item.morebo.sm": "Aphrodisiac",
   "item.morebo.smt": "Aphrodisiac Syringe",
@@ -24,6 +25,8 @@
   "tooltip.morebo.test_tube.solution": "§9[Solution] Contains",
   "tooltip.morebo.test_tube.solids": "§e[Solids] Contains",
   "tooltip.morebo.test_tube.solid_item": "  - %s",
+  "tooltip.morebo.test_tube.reacting": "§cReacting: ~%s s",
+  "tooltip.morebo.test_tube.full": "§cTube is full!",
   "morebo.configuration.section.morebo.common.toml.title": "MoreBreedingOptimize · Configuration",
   "morebo.configuration.thrustStrength": "Thrust Strength",
   "morebo.configuration.thrustStrength.tooltip": "Thrust strength applied to animals during breeding (recommended: 0.1 ~ 2.0)",

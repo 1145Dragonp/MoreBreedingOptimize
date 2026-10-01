@@ -1,10 +1,22 @@
 {
-  "gh": {
+  "psx": {
+    "tiem": 0,
     "neededitem": [
-      "minecraft:iron_ingot",
-      "minecraft:coal",
-      "minecraft:gunpowder",
-      "minecraft:blaze_powder"
+      { "id": "minecraft:iron_ingot",
+        "count": 1
+      },
+      {
+        "id": "minecraft:coal",
+        "count": 1
+      },
+      {
+        "id": "minecraft:gunpowder",
+        "count": 1
+      },
+      {
+        "id": "minecraft:blaze_powder",
+        "count": 1
+      }
     ],
     "needsolution": false,
     "clearall": true,

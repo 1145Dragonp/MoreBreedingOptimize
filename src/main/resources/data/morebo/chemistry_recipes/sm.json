@@ -1,9 +1,17 @@
 {
   "sm": {
+    "tiem": 0,
     "neededitem": [
-      "minecraft:pink_dye",
-      "minecraft:sugar",
-      "minecraft:golden_carrot"
+      { "id": "minecraft:pink_dye",
+        "count": 1
+      },
+      { "id": "minecraft:sugar",
+        "count": 1
+      },
+      {
+        "id": "minecraft:golden_carrot",
+        "count": 1
+      }
     ],
     "needsolution": true,
     "clearall": true,
