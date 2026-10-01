@@ -1,5 +1,6 @@
 package mrmd.morebreedingoptimize.boosfight.sgc;
 
+import mrmd.morebreedingoptimize.boosfight.BoosFightItem;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;

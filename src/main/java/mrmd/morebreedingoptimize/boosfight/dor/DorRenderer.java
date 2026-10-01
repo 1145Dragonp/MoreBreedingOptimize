@@ -1,4 +1,4 @@
-package mrmd.morebreedingoptimize.boosfight.sgc;
+package mrmd.morebreedingoptimize.boosfight.dor;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -14,22 +14,23 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-public class SgcRenderer extends EntityRenderer<SgcEntity> {
+public class DorRenderer extends EntityRenderer<DorEntity> {
     private final ItemRenderer itemRenderer;
 
-    public SgcRenderer(EntityRendererProvider.Context context) {
+    public DorRenderer(EntityRendererProvider.Context context) {
         super(context);
         this.itemRenderer = Minecraft.getInstance().getItemRenderer();
     }
 
     @Override
-    public void render(SgcEntity entity, float entityYaw, float partialTicks,
+    public void render(DorEntity entity, float entityYaw, float partialTicks,
                        PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - entityYaw));
+        poseStack.translate(0, 1.5F, 0);   // X=左右, Y=上下(负下沉), Z=前后
+// 加这行调大小：
         poseStack.scale(3.0F, 3.0F, 3.0F);
-        poseStack.translate(0, 0.15F, 0);
-        ItemStack stack = new ItemStack(BoosFightItem.sgc.get());
+        ItemStack stack = new ItemStack(BoosFightItem.dor.get());
         this.itemRenderer.renderStatic(
                 stack, ItemDisplayContext.FIXED,
                 packedLight, OverlayTexture.NO_OVERLAY,
@@ -39,7 +40,7 @@ public class SgcRenderer extends EntityRenderer<SgcEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(SgcEntity entity) {
+    public ResourceLocation getTextureLocation(DorEntity entity) {
         return TextureAtlas.LOCATION_BLOCKS;
     }
 }

@@ -1,5 +1,6 @@
 package mrmd.morebreedingoptimize.boosfight.sgc;
 
+import mrmd.morebreedingoptimize.boosfight.BoosFightItem;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;

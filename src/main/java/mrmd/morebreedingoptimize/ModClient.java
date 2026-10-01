@@ -13,7 +13,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import mrmd.morebreedingoptimize.MD.SM.SMItem;
-import mrmd.morebreedingoptimize.boosfight.sgc.BoosFightItem;
+import mrmd.morebreedingoptimize.boosfight.BoosFightItem;
 
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
@@ -32,6 +32,7 @@ public class ModClient {
     @SubscribeEvent
     static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(BoosFightItem.SGC_ENTITY.get(), mrmd.morebreedingoptimize.boosfight.sgc.SgcRenderer::new);
+        event.registerEntityRenderer(BoosFightItem.DOR_ENTITY.get(), mrmd.morebreedingoptimize.boosfight.dor.DorRenderer::new);
     }
 
     @SubscribeEvent
