@@ -16,6 +16,7 @@ import mrmd.morebreedingoptimize.MD.DOGM.DOGMITEM;
 import mrmd.morebreedingoptimize.MD.JNHC.JNHCITEM;
 import mrmd.morebreedingoptimize.MD.book.BookItem;
 import mrmd.morebreedingoptimize.MD.book.ChemistryBookItem;
+import mrmd.morebreedingoptimize.boosfight.BoosFightItem;
 
 public class MDCT {
 
@@ -46,6 +47,11 @@ public class MDCT {
                         output.accept(JNHCITEM.JNHC.get());
                         output.accept(ChemistryItem.RE_X.get());
                         output.accept(NeuterBlockItem.LHQ.get());
+                        output.accept(BoosFightItem.KP.get());
+                        output.accept(BoosFightItem.KYE.get());
+                        output.accept(BoosFightItem.dor.get());
+                        output.accept(BoosFightItem.sgc.get());
+                        output.accept(BoosFightItem.bw.get());
 
                     })
                     .build());

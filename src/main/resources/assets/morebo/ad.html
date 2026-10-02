@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>广告</title>
+    <style>
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { background:#fff; display:flex; align-items:center; justify-content:center; height:100vh; font-family:"Microsoft YaHei",sans-serif; overflow:hidden; }
+        #wrap { position:relative; transform-origin:center center; }
+        #player { width:1280px; height:720px; background:#000; }
+        #topbar { position:absolute; top:10px; right:10px; display:flex; gap:8px; z-index:10; }
+        #timer { color:#fff; font-size:16px; background:rgba(0,0,0,0.4); padding:4px 12px; border-radius:15px; backdrop-filter:blur(5px); }
+        #exitBtn { background:rgba(231,76,60,0.6); color:#fff; border:none; padding:4px 14px; font-size:14px; border-radius:15px; cursor:pointer; backdrop-filter:blur(5px); }
+        #exitBtn:hover { background:rgba(231,76,60,0.9); }
+        #blocker1 { position:absolute; top:0; left:0; width:1280px; height:680px; z-index:5; }
+        #blocker2 { position:absolute; bottom:0; left:0; width:800px; height:40px; z-index:5; }
+        .modal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.3); padding:30px 40px; text-align:center; z-index:100; }
+        .modal p { font-size:20px; color:#333; margin-bottom:10px; }
+        .modal h5 { font-size:18px; color:#e74c3c; margin-bottom:20px; }
+        .modal button { padding:8px 24px; margin:0 8px; font-size:16px; border:none; border-radius:6px; cursor:pointer; }
+        .btn-primary { background:#3498db; color:#fff; }
+        .btn-danger { background:#e74c3c; color:#fff; }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="topbar">
+        <span id="timer">30s</span>
+        <button id="exitBtn">退出</button>
+    </div>
+    <div id="player"></div>
+    <div id="blocker1"></div>
+    <div id="blocker2"></div>
+</div>
+
+<div class="modal" id="doneModal">
+    <p>已获取奖励</p>
+    <h5>答案是 C</h5>
+    <button class="btn-primary" onclick="document.getElementById('doneModal').style.display='none'">知道了</button>
+</div>
+
+<div class="modal" id="exitModal">
+    <p>确定放弃奖励吗？</p>
+    <button class="btn-danger" onclick="window.close()">放弃</button>
+    <button class="btn-primary" onclick="document.getElementById('exitModal').style.display='none'">继续观看</button>
+</div>
+
+<script>
+    const BVID = "BV1UT42167xb";
+    const TOTAL = 30;
+    const SCALE = 0.85;          // ★ 调这个：0.7 更小，1 贴满窗口
+    let watched = 0;
+    let visible = true;
+    let timer = null;
+
+    document.getElementById("exitBtn").onclick = function() {
+        document.getElementById("exitModal").style.display = "block";
+    };
+    document.addEventListener("visibilitychange", function() { visible = !document.hidden; });
+    document.addEventListener("keydown", function(e) {
+        if (e.code === "Space" || e.code === "KeyK") { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    function tick() {
+        if (visible) {
+            watched++;
+            document.getElementById("timer").innerText = (TOTAL - watched) + "s";
+            fetch("http://localhost:2578/watch?t=" + watched).catch(()=>{});
+            if (watched >= TOTAL) {
+                clearInterval(timer);
+                document.getElementById("timer").style.display = "none";
+                document.getElementById("doneModal").style.display = "block";
+                fetch("http://localhost:2578/done").catch(()=>{});
+            }
+        }
+    }
+
+    const frame = document.createElement("iframe");
+    frame.src = "https://player.bilibili.com/player.html?bvid=" + BVID + "&autoplay=1";
+    frame.width = "1280";
+    frame.height = "720";
+    frame.allowFullscreen = true;
+    document.getElementById("player").appendChild(frame);
+
+    function resize() {
+        const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720) * SCALE;
+        document.getElementById("wrap").style.transform = "scale(" + s + ")";
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    timer = setInterval(tick, 1000);
+</script>
+</body>
+</html>
