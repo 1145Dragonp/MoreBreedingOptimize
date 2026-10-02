@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>广告</title>
+    <style>
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html, body { width: 100%; height: 100%; background:#000; overflow:hidden; font-family:"Microsoft YaHei",sans-serif; }
+        
+        #wrap { position:relative; width:100%; height:100%; }
+        #player { position: absolute; top:0; left:0; width:100%; height:100%; background:#000; z-index: 1; }
+        iframe { width: 100%; height: 100%; border: none; }
+        
+        #topbar { position:absolute; top:15px; right:15px; display:flex; gap:10px; z-index:20; }
+        #timer { color:#fff; font-size:16px; font-weight: bold; background:rgba(0,0,0,0.6); padding:6px 14px; border-radius:20px; backdrop-filter:blur(5px); border: 1px solid rgba(255,255,255,0.2); }
+        #exitBtn { background:rgba(231,76,60,0.8); color:#fff; border:none; padding:6px 16px; font-size:14px; border-radius:20px; cursor:pointer; backdrop-filter:blur(5px); }
+        #exitBtn:active { opacity: 0.8; }
+        
+        #bottom-shield { position: absolute; bottom: 0; left: 0; width: 100%; height: 60px; z-index: 10; background: transparent; }
+
+        .modal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.5); padding:30px 20px; text-align:center; z-index:100; width:80%; max-width:320px; }
+        .modal p { font-size:20px; color:#333; margin-bottom:10px; font-weight: bold;}
+        .modal h5 { font-size:16px; color:#e74c3c; margin-bottom:25px; }
+        .modal button { padding:10px 24px; margin:0 5px; font-size:15px; border:none; border-radius:8px; cursor:pointer; }
+        .btn-primary { background:#3498db; color:#fff; }
+        .btn-danger { background:#e74c3c; color:#fff; }
+    </style>
+</head>
+<body>
+
+<div id="wrap">
+    <div id="topbar">
+        <span id="timer">30s</span>
+        <button id="exitBtn">退出</button>
+    </div>
+    
+    <!-- 视频区域 -->
+    <div id="player"></div>
+    <!-- 底部防误触遮罩 -->
+    <div id="bottom-shield"></div>
+</div>
+
+<!-- 完成弹窗 -->
+<div class="modal" id="doneModal">
+    <p>已获取奖励</p>
+    <h5>答案是 C</h5>
+    <button class="btn-primary" onclick="document.getElementById('doneModal').style.display='none'">知道了</button>
+</div>
+
+<!-- 退出确认弹窗 -->
+<div class="modal" id="exitModal">
+    <p>确定放弃奖励吗？</p>
+    <button class="btn-danger" onclick="history.back()">放弃</button>
+    <button class="btn-primary" onclick="document.getElementById('exitModal').style.display='none'">继续观看</button>
+</div>
+
+<script>
+    const BVID = "BV1UT42167xb";
+    const TOTAL = 30;
+    let watched = 0;
+    let visible = true;
+    let timer = null;
+    let hasStarted = false; // 标记是否已开始计时
+
+    // 初始化视频 iframe
+    const frame = document.createElement("iframe");
+    frame.src = "https://player.bilibili.com/player.html?bvid=" + BVID + "&high_quality=1&is_mobile=1&danmaku=0&autoplay=1";
+    frame.allowFullscreen = true;
+    frame.allow = "autoplay; fullscreen";
+    document.getElementById("player").appendChild(frame);
+
+    // 防抖函数：确保点击事件快速触发
+    function initTimer() {
+        if (!hasStarted) {
+            hasStarted = true;
+            if (timer) return;
+            timer = setInterval(tick, 1000);
+        }
+    }
+
+    // 监听整个页面的点击，只要用户点了一下屏幕，就开始走字
+    document.body.addEventListener('click', initTimer, { passive: true });
+    document.body.addEventListener('touchstart', initTimer, { passive: true });
+
+    // 退出按钮逻辑（去掉了会导致卡顿的 stopPropagation）
+    document.getElementById("exitBtn").onclick = function() {
+        document.getElementById("exitModal").style.display = "block";
+    };
+
+    // 监听页面切后台/锁屏
+    document.addEventListener("visibilitychange", function() { 
+        visible = !document.hidden; 
+    });
+
+    // 倒计时主逻辑
+    function tick() {
+        if (visible) {
+            watched++;
+            let remain = TOTAL - watched;
+            document.getElementById("timer").innerText = (remain > 0 ? remain : 0) + "s";
+            
+            if (watched >= TOTAL) {
+                clearInterval(timer);
+                document.getElementById("timer").style.display = "none";
+                document.getElementById("doneModal").style.display = "block";
+            }
+        }
+    }
+</script>
+</body>
+</html>
