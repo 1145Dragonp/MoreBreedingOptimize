@@ -137,7 +137,8 @@ dependencies {
     implementation "maven.modrinth:u6dRKJwZ:Y16jFgP5"
     implementation "maven.modrinth:nPQ9xkPg:1UL3EMjx"
     implementation "maven.modrinth:lhGA9TYQ:1IiqEQGl"
-    implementation "maven.modrinth:u2NJ7rzu:wYnj2tM3"
+    //implementation "maven.modrinth:u2NJ7rzu:wYnj2tM3" //jzqz
+    implementation "maven.modrinth:3qsAIzR4:M6z9GLM7" //jgfk
 
 }
 

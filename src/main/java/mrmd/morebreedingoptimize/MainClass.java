@@ -69,7 +69,9 @@ public class MainClass {
         ChemistryBookItem.register(modEventBus);
         NeuterBlockItem.register(modEventBus);
         BoosFightItem.register(modEventBus);
+        mrmd.morebreedingoptimize.dc.DCItems.register(modEventBus);
         mrmd.morebreedingoptimize.boosfight.dor.DorItem.register(modEventBus);
+        mrmd.morebreedingoptimize.boosfight.structure.ModStructures.register(modEventBus);
 
         // 仅客户端：注册 Markdown Manual 的手册与文档提供者（markdown_manual 的注册表只在客户端存在，
         // 且须在其构造完成之后注册——neoforge.mods.toml 已声明 ordering="AFTER"）

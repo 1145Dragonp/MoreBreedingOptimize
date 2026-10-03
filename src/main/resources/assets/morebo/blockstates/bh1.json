@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "morebo:block/bh1", "y": 0 },
+    "facing=east":  { "model": "morebo:block/bh1", "y": 90 },
+    "facing=south": { "model": "morebo:block/bh1", "y": 180 },
+    "facing=west":  { "model": "morebo:block/bh1", "y": 270 }
+  }
+}

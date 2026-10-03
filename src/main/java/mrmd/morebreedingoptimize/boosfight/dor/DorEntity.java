@@ -14,6 +14,9 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 
 public class DorEntity extends Mob {
     private boolean open = false;
@@ -21,11 +24,19 @@ public class DorEntity extends Mob {
     private int fleeTicks = 0;
     private double startY;
     private double fleeY;
+    private static final EntityDataAccessor<Boolean> DATA_ASCENSION = SynchedEntityData.defineId(DorEntity.class, EntityDataSerializers.BOOLEAN);
+    private int ascensionTicks = 0;
 
     public DorEntity(EntityType<? extends Mob> type, Level level) {
         super(type, level);
         this.setNoAi(true);
         this.xpReward = 0;
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_ASCENSION, false);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -40,6 +51,15 @@ public class DorEntity extends Mob {
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         if (this.level().isClientSide) return InteractionResult.SUCCESS;
         if (fleeing) return InteractionResult.PASS;
+        if (player.getItemInHand(hand).isEmpty()) {
+            player.addItem(new net.minecraft.world.item.ItemStack(mrmd.morebreedingoptimize.boosfight.BoosFightItem.KP.get()));
+            return InteractionResult.CONSUME;
+        }
+        if (player.getItemInHand(hand).getItem() == mrmd.morebreedingoptimize.boosfight.BoosFightItem.KYE.get()) {
+            this.entityData.set(DATA_ASCENSION, true);
+            ascensionTicks = 0;
+            return InteractionResult.CONSUME;
+        }
         this.open = !this.open;
         return InteractionResult.CONSUME;
     }
@@ -72,6 +92,35 @@ public class DorEntity extends Mob {
             this.setBoundingBox(new AABB(cx - halfLong, yMin, cz - halfThin, cx + halfLong, yMax, cz + halfThin));
         } else {
             this.setBoundingBox(new AABB(cx - halfThin, yMin, cz - halfLong, cx + halfThin, yMax, cz + halfLong));
+        }
+
+        if (this.entityData.get(DATA_ASCENSION)) {
+            ascensionTicks++;
+            this.setPos(this.getX(), this.getY() + 0.15, this.getZ());
+            this.level().addParticle(ParticleTypes.FIREWORK,
+                    this.getX() + (this.random.nextDouble()-0.5), this.getY() + this.random.nextDouble()*2, this.getZ() + (this.random.nextDouble()-0.5),
+                    0, 0.1, 0);
+            for (int i = 0; i < 15; i++) {
+                double ox = (this.random.nextDouble()-0.5)*3;
+                double oz = (this.random.nextDouble()-0.5)*3;
+                this.level().addParticle(ParticleTypes.FLAME,
+                        this.getX() + ox, this.getY() - 0.5, this.getZ() + oz,
+                        ox*0.05, -0.25, oz*0.05);
+            }
+            if (this.random.nextInt(3) == 0) {
+                this.level().addParticle(ParticleTypes.LARGE_SMOKE,
+                        this.getX() + (this.random.nextDouble()-0.5)*2, this.getY() - 0.5, this.getZ() + (this.random.nextDouble()-0.5)*2,
+                        0, 0.05, 0);
+            }
+            if (ascensionTicks == 20) {
+                this.level().playSound(null, this.blockPosition(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.HOSTILE, 1.0F, 1.0F);
+            }
+            if (ascensionTicks >= 40) {
+                this.level().playSound(null, this.blockPosition(), SoundEvents.FIREWORK_ROCKET_BLAST, SoundSource.HOSTILE, 1.0F, 1.0F);
+                this.discard();
+                return;
+            }
+            return;
         }
 
         if (!fleeing && this.getHealth() <= 10.0F && this.getHealth() > 0) {

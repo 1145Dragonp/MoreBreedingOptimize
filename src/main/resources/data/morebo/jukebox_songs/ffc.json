@@ -1,0 +1,10 @@
+{
+  "sound_event": {
+    "sound_id": "morebo:ffc"
+  },
+  "description": {
+    "text": "FFC"
+  },
+  "length_in_seconds": 8.0,
+  "comparator_output": 13
+}

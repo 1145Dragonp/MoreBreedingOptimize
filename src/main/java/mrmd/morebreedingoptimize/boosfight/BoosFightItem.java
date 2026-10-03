@@ -37,6 +37,10 @@ public class BoosFightItem {
     public static final Supplier<Block> ml = BLOCKS.register("ml", () -> new MuralBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).strength(1.0F, 4.0F).requiresCorrectToolForDrops().noOcclusion()));
     public static final net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> ml_item = ITEMS.registerSimpleBlockItem("ml", ml);
 
+    public static final Supplier<Item> bh0 = ITEMS.register("bh0", () -> new mrmd.morebreedingoptimize.boosfight.sgc.MuralItem(new Item.Properties(), "bh0"));
+
+    public static final Supplier<Item> bh1 = ITEMS.register("bh1", () -> new mrmd.morebreedingoptimize.boosfight.sgc.MuralItem(new Item.Properties(), "bh1"));
+
     public static final Supplier<Item> KP = ITEMS.register("kp", () -> new mrmd.morebreedingoptimize.boosfight.dor.KpItem(new Item.Properties().rarity(Rarity.EPIC)));
 
     public static final Supplier<Item> KYE = ITEMS.register("key", () -> new Item(new Item.Properties().rarity(Rarity.EPIC)));

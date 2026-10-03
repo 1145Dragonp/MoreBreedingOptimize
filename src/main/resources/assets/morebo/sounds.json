@@ -1,0 +1,11 @@
+{
+  "ffc": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "morebo:ffc",
+        "stream": true
+      }
+    ]
+  }
+}

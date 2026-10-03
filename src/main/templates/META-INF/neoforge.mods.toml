@@ -46,14 +46,13 @@ authors="${mod_authors}"
 #authors="Mrmagicdragon"
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Example mod description.
+喂食 → 等待 → 生崽"变得更有趣
 '''
+
+logoFile = "logo.png"
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
 # Mixin：剥离 Markdown Manual 标题文字的下划线（HeaderSegment.getFormat() 里写死的 UNDERLINE）。
-[[mixins]]
-config="morebo.mixins.json"
-
 # The [[accessTransformers]] block allows you to declare where your AT file is.
 # If this block is omitted, a fallback attempt will be made to load an AT from META-INF/accesstransformer.cfg
 #[[accessTransformers]]
